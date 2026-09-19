@@ -222,6 +222,7 @@
 
     footer {
       margin-top: 40px;
+      position: relative;
       font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -231,17 +232,14 @@
       line-height: 1.6;
       color: #333333;
       letter-spacing: 0.03em;
+      padding-bottom: 20px;
     }
 
     .distribution-warning {
-      margin-top: 60px;
-      font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Helvetica Neue",
-        sans-serif;
+      position: absolute;
+      right: 0;
+      top: 16px;
       font-size: 8px;
-      line-height: 1.4;
       color: rgba(51, 51, 51, 0.55);
       letter-spacing: 0.03em;
     }
@@ -401,11 +399,8 @@
 
     <footer>
       <span>© 2026 Nagai Hiyu</span>
+      <span class="distribution-warning">無断配布禁止</span>
     </footer>
-
-    <div class="distribution-warning">
-      無断配布禁止
-    </div>
 
   </main>
 
