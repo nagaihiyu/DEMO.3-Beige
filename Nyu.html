@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>DEMO.3「Beige」</title>
+
+  <!-- Adobe Fonts -->
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'qtl1pmd',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,
+      t=setTimeout(function(){
+        h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";
+      },config.scriptTimeout),
+      tk=d.createElement("script"),
+      f=false,
+      s=d.getElementsByTagName("script")[0],
+      a;
+
+      h.className+=" wf-loading";
+
+      tk.src='https://use.typekit.net/'+config.kitId+'.js';
+
+      tk.async=true;
+
+      tk.onload=tk.onreadystatechange=function(){
+        a=this.readyState;
+
+        if(f||a&&a!="complete"&&a!="loaded")return;
+
+        f=true;
+        clearTimeout(t);
+
+        try {
+          Typekit.load(config);
+        } catch(e) {}
+      };
+
+      s.parentNode.insertBefore(tk,s)
+    })(document);
+  </script>
+
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #a0d8ef;
+      color: #ffffff;
+
+      font-family:
+        "dnp-shuei-nmincho-std",
+        sans-serif;
+
+      font-weight: 400;
+
+      padding: 100px 24px 40px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 42px;
+
+      font-size: 20px;
+      font-weight: 400;
+
+      line-height: 1.4;
+      letter-spacing: 0.04em;
+    }
+
+    .track {
+      margin-bottom: 20px;
+    }
+
+    .track-title {
+      margin-bottom: 5px;
+
+      font-size: 13px;
+      font-weight: 400;
+
+      line-height: 1.3;
+      letter-spacing: 0.03em;
+    }
+
+    .player {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+      gap: 7px;
+    }
+
+    /*
+      UI部分はにじませず、
+      プレイヤーとして見やすい
+      システムフォントを使用
+    */
+
+    .play-button,
+    .time,
+    .menu-button,
+    .menu {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        sans-serif;
+    }
+
+    .play-button {
+      width: 20px;
+      height: 20px;
+
+      padding: 0;
+      border: none;
+      background: transparent;
+
+      color: #ffffff;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 12px;
+      line-height: 1;
+
+      flex-shrink: 0;
+    }
+
+    .progress-area {
+      flex: 1;
+
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      min-width: 0;
+    }
+
+    .progress-bar {
+      position: relative;
+
+      flex: 1;
+
+      height: 12px;
+
+      cursor: pointer;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .progress-bar::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+
+      top: 50%;
+
+      height: 1px;
+
+      background: rgba(255, 255, 255, 0.45);
+
+      transform: translateY(-50%);
+    }
+
+    .progress-fill {
+      position: absolute;
+
+      left: 0;
+      top: 50%;
+
+      width: 0;
+      height: 1px;
+
+      background: #ffffff;
+
+      transform: translateY(-50%);
+    }
+
+    .progress-dot {
+      position: absolute;
+
+      top: 50%;
+      left: 0;
+
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: #ffffff;
+
+      transform: translate(-50%, -50%);
+    }
+
+    .time {
+      white-space: nowrap;
+
+      font-size: 10px;
+      line-height: 1;
+
+      letter-spacing: 0.02em;
+
+      flex-shrink: 0;
+    }
+
+    .menu-button {
+      width: 20px;
+      height: 24px;
+
+      padding: 0;
+      border: none;
+      background: transparent;
+
+      color: #ffffff;
+
+      cursor: pointer;
+
+      font-size: 18px;
+      line-height: 1;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex-shrink: 0;
+    }
+
+    .menu {
+      position: absolute;
+
+      right: 0;
+      bottom: 30px;
+
+      display: none;
+
+      padding: 8px 12px;
+
+      background: rgba(255, 255, 255, 0.95);
+
+      box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08);
+
+      z-index: 10;
+    }
+
+    .menu.open {
+      display: block;
+    }
+
+    .menu a {
+      color: #555555;
+
+      text-decoration: none;
+
+      font-size: 11px;
+
+      white-space: nowrap;
+    }
+
+    footer {
+      margin-top: 40px;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        sans-serif;
+
+      font-size: 9px;
+      line-height: 1.6;
+
+      color: rgba(255, 255, 255, 0.7);
+
+      letter-spacing: 0.03em;
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <main class="container">
+
+    <h1>DEMO.3「Beige」</h1>
+
+
+    <section class="track">
+
+      <div class="track-title">
+        01　みずうみのゆめ
+      </div>
+
+      <div class="player">
+
+        <audio src="01.mp3" preload="metadata"></audio>
+
+        <button class="play-button" type="button">
+          ▶
+        </button>
+
+        <div class="progress-area">
+
+          <div class="progress-bar">
+
+            <div class="progress-fill"></div>
+
+            <div class="progress-dot"></div>
+
+          </div>
+
+          <div class="time">
+            <span class="current">0:00</span>
+            /
+            <span class="duration">0:00</span>
+          </div>
+
+        </div>
+
+        <button class="menu-button" type="button">
+          ⋮
+        </button>
+
+        <div class="menu">
+          <a href="01.mp3" download>
+            Download
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="track">
+
+      <div class="track-title">
+        02　とうめい
+      </div>
+
+      <div class="player">
+
+        <audio src="02.mp3" preload="metadata"></audio>
+
+        <button class="play-button" type="button">
+          ▶
+        </button>
+
+        <div class="progress-area">
+
+          <div class="progress-bar">
+
+            <div class="progress-fill"></div>
+
+            <div class="progress-dot"></div>
+
+          </div>
+
+          <div class="time">
+            <span class="current">0:00</span>
+            /
+            <span class="duration">0:00</span>
+          </div>
+
+        </div>
+
+        <button class="menu-button" type="button">
+          ⋮
+        </button>
+
+        <div class="menu">
+          <a href="02.mp3" download>
+            Download
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="track">
+
+      <div class="track-title">
+        03　平行
+      </div>
+
+      <div class="player">
+
+        <audio src="03.mp3" preload="metadata"></audio>
+
+        <button class="play-button" type="button">
+          ▶
+        </button>
+
+        <div class="progress-area">
+
+          <div class="progress-bar">
+
+            <div class="progress-fill"></div>
+
+            <div class="progress-dot"></div>
+
+          </div>
+
+          <div class="time">
+            <span class="current">0:00</span>
+            /
+            <span class="duration">0:00</span>
+          </div>
+
+        </div>
+
+        <button class="menu-button" type="button">
+          ⋮
+        </button>
+
+        <div class="menu">
+          <a href="03.mp3" download>
+            Download
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="track">
+
+      <div class="track-title">
+        04　papa
+      </div>
+
+      <div class="player">
+
+        <audio src="04.mp3" preload="metadata"></audio>
+
+        <button class="play-button" type="button">
+          ▶
+        </button>
+
+        <div class="progress-area">
+
+          <div class="progress-bar">
+
+            <div class="progress-fill"></div>
+
+            <div class="progress-dot"></div>
+
+          </div>
+
+          <div class="time">
+            <span class="current">0:00</span>
+            /
+            <span class="duration">0:00</span>
+          </div>
+
+        </div>
+
+        <button class="menu-button" type="button">
+          ⋮
+        </button>
+
+        <div class="menu">
+          <a href="04.mp3" download>
+            Download
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section class="track">
+
+      <div class="track-title">
+        05　すりがらす
+      </div>
+
+      <div class="player">
+
+        <audio src="05.mp3" preload="metadata"></audio>
+
+        <button class="play-button" type="button">
+          ▶
+        </button>
+
+        <div class="progress-area">
+
+          <div class="progress-bar">
+
+            <div class="progress-fill"></div>
+
+            <div class="progress-dot"></div>
+
+          </div>
+
+          <div class="time">
+            <span class="current">0:00</span>
+            /
+            <span class="duration">0:00</span>
+          </div>
+
+        </div>
+
+        <button class="menu-button" type="button">
+          ⋮
+        </button>
+
+        <div class="menu">
+          <a href="05.mp3" download>
+            Download
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <footer>
+      無断配布禁止<br>
+      © 2026 Nagai Hiyu
+    </footer>
+
+  </main>
+
+
+  <script>
+
+    const players =
+      document.querySelectorAll(".player");
+
+
+    players.forEach(player => {
+
+      const audio =
+        player.querySelector("audio");
+
+      const playButton =
+        player.querySelector(".play-button");
+
+      const progressBar =
+        player.querySelector(".progress-bar");
+
+      const progressFill =
+        player.querySelector(".progress-fill");
+
+      const progressDot =
+        player.querySelector(".progress-dot");
+
+      const currentTime =
+        player.querySelector(".current");
+
+      const duration =
+        player.querySelector(".duration");
+
+      const menuButton =
+        player.querySelector(".menu-button");
+
+      const menu =
+        player.querySelector(".menu");
+
+
+      function formatTime(seconds) {
+
+        if (!isFinite(seconds)) {
+          return "0:00";
+        }
+
+        const minutes =
+          Math.floor(seconds / 60);
+
+        const secs =
+          Math.floor(seconds % 60)
+            .toString()
+            .padStart(2, "0");
+
+        return minutes + ":" + secs;
+      }
+
+
+      playButton.addEventListener(
+        "click",
+        () => {
+
+          players.forEach(otherPlayer => {
+
+            const otherAudio =
+              otherPlayer.querySelector("audio");
+
+            if (otherAudio !== audio) {
+
+              otherAudio.pause();
+
+              otherPlayer
+                .querySelector(".play-button")
+                .textContent = "▶";
+
+            }
+
+          });
+
+
+          if (audio.paused) {
+
+            audio.play();
+
+            playButton.textContent = "Ⅱ";
+
+          } else {
+
+            audio.pause();
+
+            playButton.textContent = "▶";
+
+          }
+
+        }
+      );
+
+
+      audio.addEventListener(
+        "timeupdate",
+        () => {
+
+          if (!audio.duration) return;
+
+          const percent =
+            (audio.currentTime /
+              audio.duration) * 100;
+
+          progressFill.style.width =
+            percent + "%";
+
+          progressDot.style.left =
+            percent + "%";
+
+          currentTime.textContent =
+            formatTime(audio.currentTime);
+
+        }
+      );
+
+
+      audio.addEventListener(
+        "loadedmetadata",
+        () => {
+
+          duration.textContent =
+            formatTime(audio.duration);
+
+        }
+      );
+
+
+      audio.addEventListener(
+        "ended",
+        () => {
+
+          playButton.textContent = "▶";
+
+          progressFill.style.width = "0%";
+
+          progressDot.style.left = "0%";
+
+          currentTime.textContent = "0:00";
+
+        }
+      );
+
+
+      progressBar.addEventListener(
+        "click",
+        event => {
+
+          if (!audio.duration) return;
+
+          const rect =
+            progressBar.getBoundingClientRect();
+
+          const position =
+            (event.clientX - rect.left) /
+            rect.width;
+
+          audio.currentTime =
+            position * audio.duration;
+
+        }
+      );
+
+
+      menuButton.addEventListener(
+        "click",
+        event => {
+
+          event.stopPropagation();
+
+          document
+            .querySelectorAll(".menu")
+            .forEach(otherMenu => {
+
+              if (otherMenu !== menu) {
+                otherMenu.classList.remove("open");
+              }
+
+            });
+
+          menu.classList.toggle("open");
+
+        }
+      );
+
+    });
+
+
+    document.addEventListener(
+      "click",
+      () => {
+
+        document
+          .querySelectorAll(".menu")
+          .forEach(menu => {
+
+            menu.classList.remove("open");
+
+          });
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
