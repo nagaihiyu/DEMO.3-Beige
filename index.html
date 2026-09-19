@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -60,13 +59,8 @@
     body {
       background: #D6CEC2;
       color: #333333;
-
-      font-family:
-        "dnp-shuei-nmincho-std",
-        sans-serif;
-
+      font-family: "dnp-shuei-nmincho-std", sans-serif;
       font-weight: 400;
-
       padding: 100px 24px 40px;
     }
 
@@ -78,10 +72,8 @@
 
     h1 {
       margin: 0 0 42px;
-
       font-size: 20px;
       font-weight: 400;
-
       line-height: 1.4;
       letter-spacing: 0.04em;
     }
@@ -92,20 +84,16 @@
 
     .track-title {
       margin-bottom: 5px;
-
       font-size: 13px;
       font-weight: 400;
-
       line-height: 1.3;
       letter-spacing: 0.03em;
     }
 
     .player {
       position: relative;
-
       display: flex;
       align-items: center;
-
       width: 100%;
       gap: 7px;
     }
@@ -124,144 +112,100 @@
     .play-button {
       width: 20px;
       height: 20px;
-
       padding: 0;
       border: none;
       background: transparent;
-
       color: #333333;
-
       cursor: pointer;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       font-size: 12px;
       line-height: 1;
-
       flex-shrink: 0;
     }
 
     .progress-area {
       flex: 1;
-
       display: flex;
       align-items: center;
-
       gap: 8px;
-
       min-width: 0;
     }
 
     .progress-bar {
       position: relative;
-
       flex: 1;
-
       height: 12px;
-
       cursor: pointer;
-
       display: flex;
       align-items: center;
     }
 
     .progress-bar::before {
       content: "";
-
       position: absolute;
-
       left: 0;
       right: 0;
-
       top: 50%;
-
       height: 1px;
-
       background: rgba(51, 51, 51, 0.45);
-
       transform: translateY(-50%);
     }
 
     .progress-fill {
       position: absolute;
-
       left: 0;
       top: 50%;
-
       width: 0;
       height: 1px;
-
       background: #333333;
-
       transform: translateY(-50%);
     }
 
     .progress-dot {
       position: absolute;
-
       top: 50%;
       left: 0;
-
       width: 5px;
       height: 5px;
-
       border-radius: 50%;
-
       background: #333333;
-
       transform: translate(-50%, -50%);
     }
 
     .time {
       white-space: nowrap;
-
       font-size: 10px;
       line-height: 1;
-
       letter-spacing: 0.02em;
-
       flex-shrink: 0;
     }
 
     .menu-button {
       width: 20px;
       height: 24px;
-
       padding: 0;
       border: none;
       background: transparent;
-
       color: #333333;
-
       cursor: pointer;
-
       font-size: 18px;
       line-height: 1;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
       flex-shrink: 0;
     }
 
     .menu {
       position: absolute;
-
       right: 0;
       bottom: 30px;
-
       display: none;
-
       padding: 8px 12px;
-
       background: rgba(255, 255, 255, 0.95);
-
-      box-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.08);
-
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
       z-index: 10;
     }
 
@@ -271,28 +215,34 @@
 
     .menu a {
       color: #333333;
-
       text-decoration: none;
-
       font-size: 11px;
-
       white-space: nowrap;
     }
 
     footer {
       margin-top: 40px;
-
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Helvetica Neue",
         sans-serif;
-
       font-size: 9px;
       line-height: 1.6;
-
       color: #333333;
+      letter-spacing: 0.03em;
+    }
 
+    .distribution-warning {
+      margin-top: 60px;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        sans-serif;
+      font-size: 8px;
+      line-height: 1.4;
+      color: rgba(51, 51, 51, 0.55);
       letter-spacing: 0.03em;
     }
   </style>
@@ -305,16 +255,12 @@
     <h1>DEMO.3「Beige」</h1>
 
     <section class="track">
-      <div class="track-title">
-        01　みずうみのゆめ
-      </div>
+      <div class="track-title">01　みずうみのゆめ</div>
 
       <div class="player">
         <audio src="01.mp3" preload="metadata"></audio>
 
-        <button class="play-button" type="button">
-          ▶
-        </button>
+        <button class="play-button" type="button">▶</button>
 
         <div class="progress-area">
           <div class="progress-bar">
@@ -329,29 +275,21 @@
           </div>
         </div>
 
-        <button class="menu-button" type="button">
-          ⋮
-        </button>
+        <button class="menu-button" type="button">⋮</button>
 
         <div class="menu">
-          <a href="01.mp3" download>
-            Download
-          </a>
+          <a href="01.mp3" download>Download</a>
         </div>
       </div>
     </section>
 
     <section class="track">
-      <div class="track-title">
-        02　とうめい
-      </div>
+      <div class="track-title">02　とうめい</div>
 
       <div class="player">
         <audio src="02.mp3" preload="metadata"></audio>
 
-        <button class="play-button" type="button">
-          ▶
-        </button>
+        <button class="play-button" type="button">▶</button>
 
         <div class="progress-area">
           <div class="progress-bar">
@@ -366,29 +304,21 @@
           </div>
         </div>
 
-        <button class="menu-button" type="button">
-          ⋮
-        </button>
+        <button class="menu-button" type="button">⋮</button>
 
         <div class="menu">
-          <a href="02.mp3" download>
-            Download
-          </a>
+          <a href="02.mp3" download>Download</a>
         </div>
       </div>
     </section>
 
     <section class="track">
-      <div class="track-title">
-        03　平行
-      </div>
+      <div class="track-title">03　平行</div>
 
       <div class="player">
         <audio src="03.mp3" preload="metadata"></audio>
 
-        <button class="play-button" type="button">
-          ▶
-        </button>
+        <button class="play-button" type="button">▶</button>
 
         <div class="progress-area">
           <div class="progress-bar">
@@ -403,29 +333,21 @@
           </div>
         </div>
 
-        <button class="menu-button" type="button">
-          ⋮
-        </button>
+        <button class="menu-button" type="button">⋮</button>
 
         <div class="menu">
-          <a href="03.mp3" download>
-            Download
-          </a>
+          <a href="03.mp3" download>Download</a>
         </div>
       </div>
     </section>
 
     <section class="track">
-      <div class="track-title">
-        04　papa
-      </div>
+      <div class="track-title">04　papa</div>
 
       <div class="player">
         <audio src="04.mp3" preload="metadata"></audio>
 
-        <button class="play-button" type="button">
-          ▶
-        </button>
+        <button class="play-button" type="button">▶</button>
 
         <div class="progress-area">
           <div class="progress-bar">
@@ -440,29 +362,21 @@
           </div>
         </div>
 
-        <button class="menu-button" type="button">
-          ⋮
-        </button>
+        <button class="menu-button" type="button">⋮</button>
 
         <div class="menu">
-          <a href="04.mp3" download>
-            Download
-          </a>
+          <a href="04.mp3" download>Download</a>
         </div>
       </div>
     </section>
 
     <section class="track">
-      <div class="track-title">
-        05　すりがらす
-      </div>
+      <div class="track-title">05　すりがらす</div>
 
       <div class="player">
         <audio src="05.mp3" preload="metadata"></audio>
 
-        <button class="play-button" type="button">
-          ▶
-        </button>
+        <button class="play-button" type="button">▶</button>
 
         <div class="progress-area">
           <div class="progress-bar">
@@ -477,215 +391,153 @@
           </div>
         </div>
 
-        <button class="menu-button" type="button">
-          ⋮
-        </button>
+        <button class="menu-button" type="button">⋮</button>
 
         <div class="menu">
-          <a href="05.mp3" download>
-            Download
-          </a>
+          <a href="05.mp3" download>Download</a>
         </div>
       </div>
     </section>
 
     <footer>
-     <span style="color: #333333;">無断配布禁止</span><br>
-      <span style="color: #333333;">© 2026Nagai Hiyu</span>
+      <span>© 2026 Nagai Hiyu</span>
+    </footer>
+
+    <div class="distribution-warning">
+      無断配布禁止
+    </div>
 
   </main>
 
   <script>
-    const players =
-      document.querySelectorAll(".player");
+    const players = document.querySelectorAll(".player");
 
     players.forEach(player => {
 
-      const audio =
-        player.querySelector("audio");
-
-      const playButton =
-        player.querySelector(".play-button");
-
-      const progressBar =
-        player.querySelector(".progress-bar");
-
-      const progressFill =
-        player.querySelector(".progress-fill");
-
-      const progressDot =
-        player.querySelector(".progress-dot");
-
-      const currentTime =
-        player.querySelector(".current");
-
-      const duration =
-        player.querySelector(".duration");
-
-      const menuButton =
-        player.querySelector(".menu-button");
-
-      const menu =
-        player.querySelector(".menu");
+      const audio = player.querySelector("audio");
+      const playButton = player.querySelector(".play-button");
+      const progressBar = player.querySelector(".progress-bar");
+      const progressFill = player.querySelector(".progress-fill");
+      const progressDot = player.querySelector(".progress-dot");
+      const currentTime = player.querySelector(".current");
+      const duration = player.querySelector(".duration");
+      const menuButton = player.querySelector(".menu-button");
+      const menu = player.querySelector(".menu");
 
       function formatTime(seconds) {
-
         if (!isFinite(seconds)) {
           return "0:00";
         }
 
-        const minutes =
-          Math.floor(seconds / 60);
+        const minutes = Math.floor(seconds / 60);
 
-        const secs =
-          Math.floor(seconds % 60)
-            .toString()
-            .padStart(2, "0");
+        const secs = Math.floor(seconds % 60)
+          .toString()
+          .padStart(2, "0");
 
         return minutes + ":" + secs;
       }
 
-      playButton.addEventListener(
-        "click",
-        () => {
+      playButton.addEventListener("click", () => {
 
-          players.forEach(otherPlayer => {
+        players.forEach(otherPlayer => {
 
-            const otherAudio =
-              otherPlayer.querySelector("audio");
+          const otherAudio = otherPlayer.querySelector("audio");
 
-            if (otherAudio !== audio) {
+          if (otherAudio !== audio) {
+            otherAudio.pause();
 
-              otherAudio.pause();
+            otherPlayer
+              .querySelector(".play-button")
+              .textContent = "▶";
+          }
 
-              otherPlayer
-                .querySelector(".play-button")
-                .textContent = "▶";
+        });
 
+        if (audio.paused) {
+          audio.play();
+          playButton.textContent = "Ⅱ";
+        } else {
+          audio.pause();
+          playButton.textContent = "▶";
+        }
+
+      });
+
+      audio.addEventListener("timeupdate", () => {
+
+        if (!audio.duration) return;
+
+        const percent =
+          (audio.currentTime / audio.duration) * 100;
+
+        progressFill.style.width = percent + "%";
+        progressDot.style.left = percent + "%";
+
+        currentTime.textContent =
+          formatTime(audio.currentTime);
+
+      });
+
+      audio.addEventListener("loadedmetadata", () => {
+        duration.textContent =
+          formatTime(audio.duration);
+      });
+
+      audio.addEventListener("ended", () => {
+
+        playButton.textContent = "▶";
+        progressFill.style.width = "0%";
+        progressDot.style.left = "0%";
+        currentTime.textContent = "0:00";
+
+      });
+
+      progressBar.addEventListener("click", event => {
+
+        if (!audio.duration) return;
+
+        const rect =
+          progressBar.getBoundingClientRect();
+
+        const position =
+          (event.clientX - rect.left) / rect.width;
+
+        audio.currentTime =
+          position * audio.duration;
+
+      });
+
+      menuButton.addEventListener("click", event => {
+
+        event.stopPropagation();
+
+        document
+          .querySelectorAll(".menu")
+          .forEach(otherMenu => {
+
+            if (otherMenu !== menu) {
+              otherMenu.classList.remove("open");
             }
 
           });
 
-          if (audio.paused) {
+        menu.classList.toggle("open");
 
-            audio.play();
-
-            playButton.textContent = "Ⅱ";
-
-          } else {
-
-            audio.pause();
-
-            playButton.textContent = "▶";
-
-          }
-
-        }
-      );
-
-      audio.addEventListener(
-        "timeupdate",
-        () => {
-
-          if (!audio.duration) return;
-
-          const percent =
-            (audio.currentTime /
-              audio.duration) * 100;
-
-          progressFill.style.width =
-            percent + "%";
-
-          progressDot.style.left =
-            percent + "%";
-
-          currentTime.textContent =
-            formatTime(audio.currentTime);
-
-        }
-      );
-
-      audio.addEventListener(
-        "loadedmetadata",
-        () => {
-
-          duration.textContent =
-            formatTime(audio.duration);
-
-        }
-      );
-
-      audio.addEventListener(
-        "ended",
-        () => {
-
-          playButton.textContent = "▶";
-
-          progressFill.style.width = "0%";
-
-          progressDot.style.left = "0%";
-
-          currentTime.textContent = "0:00";
-
-        }
-      );
-
-      progressBar.addEventListener(
-        "click",
-        event => {
-
-          if (!audio.duration) return;
-
-          const rect =
-            progressBar.getBoundingClientRect();
-
-          const position =
-            (event.clientX - rect.left) /
-            rect.width;
-
-          audio.currentTime =
-            position * audio.duration;
-
-        }
-      );
-
-      menuButton.addEventListener(
-        "click",
-        event => {
-
-          event.stopPropagation();
-
-          document
-            .querySelectorAll(".menu")
-            .forEach(otherMenu => {
-
-              if (otherMenu !== menu) {
-                otherMenu.classList.remove("open");
-              }
-
-            });
-
-          menu.classList.toggle("open");
-
-        }
-      );
+      });
 
     });
 
-    document.addEventListener(
-      "click",
-      () => {
+    document.addEventListener("click", () => {
 
-        document
-          .querySelectorAll(".menu")
-          .forEach(menu => {
+      document
+        .querySelectorAll(".menu")
+        .forEach(menu => {
+          menu.classList.remove("open");
+        });
 
-            menu.classList.remove("open");
-
-          });
-
-      }
-    );
+    });
   </script>
 
 </body>
+</html>
