@@ -2,38 +2,59 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="robots"
+    content="noindex, nofollow">
 
   <title>DEMO.3「Beige」</title>
 
   <script>
     (function(d) {
       var config = {
-        kitId: 'qtl1pmd',
+        kitId: "qtl1pmd",
         scriptTimeout: 3000,
         async: true
-      },
-      h=d.documentElement,
-      t=setTimeout(function(){
-        h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";
-      },config.scriptTimeout),
-      tk=d.createElement("script"),
-      f=false,
-      s=d.getElementsByTagName("script")[0],
-      a;
+      };
 
-      h.className+=" wf-loading";
+      var h = d.documentElement;
 
-      tk.src='https://use.typekit.net/'+config.kitId+'.js';
-      tk.async=true;
+      var t = setTimeout(function() {
+        h.className =
+          h.className.replace(/\bwf-loading\b/g, "") +
+          " wf-inactive";
+      }, config.scriptTimeout);
 
-      tk.onload=tk.onreadystatechange=function(){
-        a=this.readyState;
+      var tk = d.createElement("script");
+      var f = false;
+      var s = d.getElementsByTagName("script")[0];
+      var a;
 
-        if(f||a&&a!="complete"&&a!="loaded")return;
+      h.className += " wf-loading";
 
-        f=true;
+      tk.src =
+        "https://use.typekit.net/" +
+        config.kitId +
+        ".js";
+
+      tk.async = true;
+
+      tk.onload = tk.onreadystatechange = function() {
+        a = this.readyState;
+
+        if (
+          f ||
+          (a &&
+          a !== "complete" &&
+          a !== "loaded")
+        ) {
+          return;
+        }
+
+        f = true;
         clearTimeout(t);
 
         try {
@@ -41,62 +62,102 @@
         } catch(e) {}
       };
 
-      s.parentNode.insertBefore(tk,s)
+      s.parentNode.insertBefore(tk, s);
     })(document);
   </script>
 
+
   <style>
+
     * {
       box-sizing: border-box;
     }
+
 
     html,
     body {
       margin: 0;
       padding: 0;
+
+      width: 100%;
+      min-height: 100%;
+
+      overflow-x: hidden;
     }
+
 
     body {
       background: #D6CEC2;
       color: #333333;
-      font-family: "dnp-shuei-nmincho-std", sans-serif;
+
+      font-family:
+        "dnp-shuei-nmincho-std",
+        sans-serif;
+
       font-weight: 400;
-      padding: 100px 24px 40px;
+
+      padding: 70px 24px 40px;
     }
+
 
     .container {
       width: 100%;
       max-width: 600px;
+
       margin: 0 auto;
     }
 
+
+    /* タイトル */
+
     h1 {
-      margin: 0 0 42px;
+      margin: 0 0 40px;
+
       font-size: 20px;
       font-weight: 400;
+
       line-height: 1.4;
+
       letter-spacing: 0.04em;
     }
 
+
+    /* 曲 */
+
     .track {
+      width: 100%;
+
       margin-bottom: 20px;
     }
 
+
     .track-title {
+      width: 100%;
+
       margin-bottom: 5px;
+
       font-size: 13px;
       font-weight: 400;
+
       line-height: 1.3;
+
       letter-spacing: 0.03em;
     }
 
+
+    /* プレイヤー */
+
     .player {
       position: relative;
+
       display: flex;
       align-items: center;
+
       width: 100%;
+
       gap: 7px;
     }
+
 
     .play-button,
     .time,
@@ -109,429 +170,1120 @@
         sans-serif;
     }
 
+
     .play-button {
       width: 20px;
       height: 20px;
+
       padding: 0;
+
       border: none;
       background: transparent;
+
       color: #333333;
+
       cursor: pointer;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       font-size: 12px;
       line-height: 1;
+
       flex-shrink: 0;
     }
+
 
     .progress-area {
       flex: 1;
+
+      min-width: 0;
+
       display: flex;
       align-items: center;
+
       gap: 8px;
-      min-width: 0;
     }
+
 
     .progress-bar {
       position: relative;
+
       flex: 1;
+
+      min-width: 0;
+
       height: 12px;
+
       cursor: pointer;
+
       display: flex;
       align-items: center;
     }
 
+
     .progress-bar::before {
       content: "";
+
       position: absolute;
+
       left: 0;
       right: 0;
+
       top: 50%;
+
       height: 1px;
-      background: rgba(51, 51, 51, 0.45);
-      transform: translateY(-50%);
+
+      background:
+        rgba(51, 51, 51, 0.45);
+
+      transform:
+        translateY(-50%);
     }
+
 
     .progress-fill {
       position: absolute;
+
       left: 0;
       top: 50%;
+
       width: 0;
       height: 1px;
+
       background: #333333;
-      transform: translateY(-50%);
+
+      transform:
+        translateY(-50%);
     }
+
 
     .progress-dot {
       position: absolute;
-      top: 50%;
+
       left: 0;
+      top: 50%;
+
       width: 5px;
       height: 5px;
+
       border-radius: 50%;
+
       background: #333333;
-      transform: translate(-50%, -50%);
+
+      transform:
+        translate(-50%, -50%);
     }
 
+
     .time {
-      white-space: nowrap;
-      font-size: 10px;
-      line-height: 1;
-      letter-spacing: 0.02em;
       flex-shrink: 0;
+
+      white-space: nowrap;
+
+      font-size: 10px;
+
+      line-height: 1;
+
+      letter-spacing: 0.02em;
     }
+
+
+    /* メニューボタン */
 
     .menu-button {
       width: 20px;
       height: 24px;
+
       padding: 0;
+
       border: none;
       background: transparent;
+
       color: #333333;
+
       cursor: pointer;
+
       font-size: 18px;
       line-height: 1;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       flex-shrink: 0;
     }
 
+
+    /* ダウンロードメニュー */
+
     .menu {
       position: absolute;
+
       right: 0;
       bottom: 30px;
+
       display: none;
+
       padding: 8px 12px;
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+      background:
+        rgba(255, 255, 255, 0.95);
+
+      box-shadow:
+        0 2px 8px
+        rgba(0, 0, 0, 0.08);
+
       z-index: 10;
     }
+
 
     .menu.open {
       display: block;
     }
 
+
     .menu a {
       color: #333333;
+
       text-decoration: none;
+
       font-size: 11px;
+
       white-space: nowrap;
     }
 
-    footer {
-      margin-top: 40px;
+
+    /* 06 Lyrics Card */
+
+    .lyrics-track {
+      margin-bottom: 20px;
+    }
+
+
+    .lyrics-button {
+      display: block;
+
+      width: 100%;
+
+      padding: 0;
+
+      border: none;
+
+      background: transparent;
+
+      color: #333333;
+
+      font-family:
+        "dnp-shuei-nmincho-std",
+        sans-serif;
+
+      font-size: 13px;
+      font-weight: 400;
+
+      line-height: 1.3;
+
+      letter-spacing: 0.03em;
+
+      text-align: left;
+
+      cursor: pointer;
+    }
+
+
+    /* Lyrics Card モーダル */
+
+    .lyrics-modal {
+      position: fixed;
+
+      inset: 0;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 24px;
+
+      background:
+        rgba(51, 51, 51, 0.25);
+
+      z-index: 100;
+    }
+
+
+    .lyrics-modal.open {
+      display: flex;
+    }
+
+
+    .lyrics-card {
       position: relative;
+
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+
+    .lyrics-card img {
+      display: block;
+
+      width: auto;
+      height: auto;
+
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+
+    .lyrics-close {
+      position: absolute;
+
+      top: -30px;
+      right: 0;
+
+      width: 24px;
+      height: 24px;
+
+      padding: 0;
+
+      border: none;
+
+      background: transparent;
+
+      color: #ffffff;
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Helvetica Neue",
         sans-serif;
-      font-size: 9px;
-      line-height: 1.6;
-      color: #333333;
-      letter-spacing: 0.03em;
-      padding-bottom: 20px;
+
+      font-size: 20px;
+
+      font-weight: 300;
+
+      line-height: 1;
+
+      cursor: pointer;
     }
+
+
+    /* Footer */
+
+    footer {
+      position: relative;
+
+      width: 100%;
+
+      margin-top: 40px;
+
+      padding-bottom: 20px;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Helvetica Neue",
+        sans-serif;
+
+      font-size: 9px;
+
+      line-height: 1.6;
+
+      color: #333333;
+
+      letter-spacing: 0.03em;
+    }
+
 
     .distribution-warning {
       position: absolute;
+
       right: 0;
       top: 16px;
+
       font-size: 8px;
-      color: rgba(51, 51, 51, 0.55);
+
+      color:
+        rgba(51, 51, 51, 0.55);
+
       letter-spacing: 0.03em;
+
+      white-space: nowrap;
     }
+
+
+    /* スマホ */
+
+    @media (max-width: 480px) {
+
+      body {
+        padding:
+          70px 24px 32px;
+      }
+
+
+      h1 {
+        margin-bottom: 40px;
+
+        font-size: 19px;
+      }
+
+
+      .track {
+        margin-bottom: 20px;
+      }
+
+
+      .track-title,
+      .lyrics-button {
+        font-size: 13px;
+      }
+
+
+      footer {
+        margin-top: 40px;
+      }
+
+    }
+
   </style>
 </head>
+
 
 <body>
 
   <main class="container">
 
-    <h1>DEMO.3「Beige」</h1>
+
+    <!-- タイトル -->
+
+    <h1>
+      DEMO.3「Beige」
+    </h1>
+
+
+    <!-- 01 -->
 
     <section class="track">
-      <div class="track-title">01　みずうみのゆめ</div>
+
+      <div class="track-title">
+        01　みずうみのゆめ
+      </div>
 
       <div class="player">
-        <audio src="01.mp3" preload="metadata"></audio>
 
-        <button class="play-button" type="button">▶</button>
+        <audio
+          src="01.mp3"
+          preload="metadata">
+        </audio>
+
+        <button
+          class="play-button"
+          type="button">
+          ▶
+        </button>
 
         <div class="progress-area">
+
           <div class="progress-bar">
+
             <div class="progress-fill"></div>
+
             <div class="progress-dot"></div>
+
           </div>
 
           <div class="time">
-            <span class="current">0:00</span>
+
+            <span class="current">
+              0:00
+            </span>
+
             /
-            <span class="duration">0:00</span>
+
+            <span class="duration">
+              0:00
+            </span>
+
           </div>
+
         </div>
 
-        <button class="menu-button" type="button">⋮</button>
+        <button
+          class="menu-button"
+          type="button">
+          ⋮
+        </button>
 
         <div class="menu">
-          <a href="01.mp3" download>Download</a>
+
+          <a
+            href="01.mp3"
+            download>
+            Download
+          </a>
+
         </div>
+
       </div>
+
     </section>
 
+
+    <!-- 02 -->
+
     <section class="track">
-      <div class="track-title">02　とうめい</div>
+
+      <div class="track-title">
+        02　とうめい
+      </div>
 
       <div class="player">
-        <audio src="02.mp3" preload="metadata"></audio>
 
-        <button class="play-button" type="button">▶</button>
+        <audio
+          src="02.mp3"
+          preload="metadata">
+        </audio>
+
+        <button
+          class="play-button"
+          type="button">
+          ▶
+        </button>
 
         <div class="progress-area">
+
           <div class="progress-bar">
+
             <div class="progress-fill"></div>
+
             <div class="progress-dot"></div>
+
           </div>
 
           <div class="time">
-            <span class="current">0:00</span>
+
+            <span class="current">
+              0:00
+            </span>
+
             /
-            <span class="duration">0:00</span>
+
+            <span class="duration">
+              0:00
+            </span>
+
           </div>
+
         </div>
 
-        <button class="menu-button" type="button">⋮</button>
+        <button
+          class="menu-button"
+          type="button">
+          ⋮
+        </button>
 
         <div class="menu">
-          <a href="02.mp3" download>Download</a>
+
+          <a
+            href="02.mp3"
+            download>
+            Download
+          </a>
+
         </div>
+
       </div>
+
     </section>
 
+
+    <!-- 03 -->
+
     <section class="track">
-      <div class="track-title">03　平行</div>
+
+      <div class="track-title">
+        03　平行
+      </div>
 
       <div class="player">
-        <audio src="03.mp3" preload="metadata"></audio>
 
-        <button class="play-button" type="button">▶</button>
+        <audio
+          src="03.mp3"
+          preload="metadata">
+        </audio>
+
+        <button
+          class="play-button"
+          type="button">
+          ▶
+        </button>
 
         <div class="progress-area">
+
           <div class="progress-bar">
+
             <div class="progress-fill"></div>
+
             <div class="progress-dot"></div>
+
           </div>
 
           <div class="time">
-            <span class="current">0:00</span>
+
+            <span class="current">
+              0:00
+            </span>
+
             /
-            <span class="duration">0:00</span>
+
+            <span class="duration">
+              0:00
+            </span>
+
           </div>
+
         </div>
 
-        <button class="menu-button" type="button">⋮</button>
+        <button
+          class="menu-button"
+          type="button">
+          ⋮
+        </button>
 
         <div class="menu">
-          <a href="03.mp3" download>Download</a>
+
+          <a
+            href="03.mp3"
+            download>
+            Download
+          </a>
+
         </div>
+
       </div>
+
     </section>
 
+
+    <!-- 04 -->
+
     <section class="track">
-      <div class="track-title">04　papa</div>
+
+      <div class="track-title">
+        04　papa
+      </div>
 
       <div class="player">
-        <audio src="04.mp3" preload="metadata"></audio>
 
-        <button class="play-button" type="button">▶</button>
+        <audio
+          src="04.mp3"
+          preload="metadata">
+        </audio>
+
+        <button
+          class="play-button"
+          type="button">
+          ▶
+        </button>
 
         <div class="progress-area">
+
           <div class="progress-bar">
+
             <div class="progress-fill"></div>
+
             <div class="progress-dot"></div>
+
           </div>
 
           <div class="time">
-            <span class="current">0:00</span>
+
+            <span class="current">
+              0:00
+            </span>
+
             /
-            <span class="duration">0:00</span>
+
+            <span class="duration">
+              0:00
+            </span>
+
           </div>
+
         </div>
 
-        <button class="menu-button" type="button">⋮</button>
+        <button
+          class="menu-button"
+          type="button">
+          ⋮
+        </button>
 
         <div class="menu">
-          <a href="04.mp3" download>Download</a>
+
+          <a
+            href="04.mp3"
+            download>
+            Download
+          </a>
+
         </div>
+
       </div>
+
     </section>
 
+
+    <!-- 05 -->
+
     <section class="track">
-      <div class="track-title">05　すりがらす</div>
+
+      <div class="track-title">
+        05　すりがらす
+      </div>
 
       <div class="player">
-        <audio src="05.mp3" preload="metadata"></audio>
 
-        <button class="play-button" type="button">▶</button>
+        <audio
+          src="05.mp3"
+          preload="metadata">
+        </audio>
+
+        <button
+          class="play-button"
+          type="button">
+          ▶
+        </button>
 
         <div class="progress-area">
+
           <div class="progress-bar">
+
             <div class="progress-fill"></div>
+
             <div class="progress-dot"></div>
+
           </div>
 
           <div class="time">
-            <span class="current">0:00</span>
+
+            <span class="current">
+              0:00
+            </span>
+
             /
-            <span class="duration">0:00</span>
+
+            <span class="duration">
+              0:00
+            </span>
+
           </div>
+
         </div>
 
-        <button class="menu-button" type="button">⋮</button>
+        <button
+          class="menu-button"
+          type="button">
+          ⋮
+        </button>
 
         <div class="menu">
-          <a href="05.mp3" download>Download</a>
+
+          <a
+            href="05.mp3"
+            download>
+            Download
+          </a>
+
         </div>
+
       </div>
+
     </section>
+
+
+    <!-- 06 Lyrics Card -->
+
+    <section class="track lyrics-track">
+
+      <button
+        class="lyrics-button"
+        type="button">
+        06　Lyrics Card〜
+      </button>
+
+    </section>
+
+
+    <!-- Footer -->
 
     <footer>
-      <span>© 2026 Nagai Hiyu</span>
-      <span class="distribution-warning">無断配布禁止</span>
+
+      <span>
+        © 2026 Nagai Hiyu
+      </span>
+
+      <span
+        class="distribution-warning">
+        無断配布禁止
+      </span>
+
     </footer>
 
   </main>
 
+
+  <!-- Lyrics Card Modal -->
+
+  <div class="lyrics-modal">
+
+    <div class="lyrics-card">
+
+      <button
+        class="lyrics-close"
+        type="button">
+        ×
+      </button>
+
+      <img
+        src="DEMO.3-Beige.jpg"
+        alt="Lyrics Card">
+
+    </div>
+
+  </div>
+
+
   <script>
-    const players = document.querySelectorAll(".player");
+
+    const players =
+      document.querySelectorAll(".player");
+
 
     players.forEach(player => {
 
-      const audio = player.querySelector("audio");
-      const playButton = player.querySelector(".play-button");
-      const progressBar = player.querySelector(".progress-bar");
-      const progressFill = player.querySelector(".progress-fill");
-      const progressDot = player.querySelector(".progress-dot");
-      const currentTime = player.querySelector(".current");
-      const duration = player.querySelector(".duration");
-      const menuButton = player.querySelector(".menu-button");
-      const menu = player.querySelector(".menu");
+      const audio =
+        player.querySelector("audio");
+
+      const playButton =
+        player.querySelector(
+          ".play-button"
+        );
+
+      const progressBar =
+        player.querySelector(
+          ".progress-bar"
+        );
+
+      const progressFill =
+        player.querySelector(
+          ".progress-fill"
+        );
+
+      const progressDot =
+        player.querySelector(
+          ".progress-dot"
+        );
+
+      const currentTime =
+        player.querySelector(
+          ".current"
+        );
+
+      const duration =
+        player.querySelector(
+          ".duration"
+        );
+
+      const menuButton =
+        player.querySelector(
+          ".menu-button"
+        );
+
+      const menu =
+        player.querySelector(
+          ".menu"
+        );
+
 
       function formatTime(seconds) {
+
         if (!isFinite(seconds)) {
           return "0:00";
         }
 
-        const minutes = Math.floor(seconds / 60);
+        const minutes =
+          Math.floor(seconds / 60);
 
-        const secs = Math.floor(seconds % 60)
-          .toString()
-          .padStart(2, "0");
+        const secs =
+          Math.floor(seconds % 60)
+            .toString()
+            .padStart(2, "0");
 
         return minutes + ":" + secs;
       }
 
-      playButton.addEventListener("click", () => {
 
-        players.forEach(otherPlayer => {
+      /* 再生・停止 */
 
-          const otherAudio = otherPlayer.querySelector("audio");
+      playButton.addEventListener(
+        "click",
+        () => {
 
-          if (otherAudio !== audio) {
-            otherAudio.pause();
+          players.forEach(
+            otherPlayer => {
 
-            otherPlayer
-              .querySelector(".play-button")
-              .textContent = "▶";
+              const otherAudio =
+                otherPlayer.querySelector(
+                  "audio"
+                );
+
+              if (otherAudio !== audio) {
+
+                otherAudio.pause();
+
+                otherPlayer
+                  .querySelector(
+                    ".play-button"
+                  )
+                  .textContent = "▶";
+
+              }
+
+            }
+          );
+
+
+          if (audio.paused) {
+
+            audio.play();
+
+            playButton.textContent =
+              "Ⅱ";
+
+          } else {
+
+            audio.pause();
+
+            playButton.textContent =
+              "▶";
+
           }
 
-        });
-
-        if (audio.paused) {
-          audio.play();
-          playButton.textContent = "Ⅱ";
-        } else {
-          audio.pause();
-          playButton.textContent = "▶";
         }
+      );
 
-      });
 
-      audio.addEventListener("timeupdate", () => {
+      /* 再生位置 */
 
-        if (!audio.duration) return;
+      audio.addEventListener(
+        "timeupdate",
+        () => {
 
-        const percent =
-          (audio.currentTime / audio.duration) * 100;
+          if (!audio.duration) {
+            return;
+          }
 
-        progressFill.style.width = percent + "%";
-        progressDot.style.left = percent + "%";
+          const percent =
+            (
+              audio.currentTime /
+              audio.duration
+            ) * 100;
 
-        currentTime.textContent =
-          formatTime(audio.currentTime);
+          progressFill.style.width =
+            percent + "%";
 
-      });
+          progressDot.style.left =
+            percent + "%";
 
-      audio.addEventListener("loadedmetadata", () => {
-        duration.textContent =
-          formatTime(audio.duration);
-      });
+          currentTime.textContent =
+            formatTime(
+              audio.currentTime
+            );
 
-      audio.addEventListener("ended", () => {
+        }
+      );
 
-        playButton.textContent = "▶";
-        progressFill.style.width = "0%";
-        progressDot.style.left = "0%";
-        currentTime.textContent = "0:00";
 
-      });
+      /* 曲の長さ */
 
-      progressBar.addEventListener("click", event => {
+      audio.addEventListener(
+        "loadedmetadata",
+        () => {
 
-        if (!audio.duration) return;
+          duration.textContent =
+            formatTime(
+              audio.duration
+            );
 
-        const rect =
-          progressBar.getBoundingClientRect();
+        }
+      );
 
-        const position =
-          (event.clientX - rect.left) / rect.width;
 
-        audio.currentTime =
-          position * audio.duration;
+      /* 曲終了 */
 
-      });
+      audio.addEventListener(
+        "ended",
+        () => {
 
-      menuButton.addEventListener("click", event => {
+          playButton.textContent =
+            "▶";
 
-        event.stopPropagation();
+          progressFill.style.width =
+            "0%";
+
+          progressDot.style.left =
+            "0%";
+
+          currentTime.textContent =
+            "0:00";
+
+        }
+      );
+
+
+      /* プログレスバー */
+
+      progressBar.addEventListener(
+        "click",
+        event => {
+
+          if (!audio.duration) {
+            return;
+          }
+
+          const rect =
+            progressBar.getBoundingClientRect();
+
+          const position =
+            (
+              event.clientX -
+              rect.left
+            ) / rect.width;
+
+          audio.currentTime =
+            position *
+            audio.duration;
+
+        }
+      );
+
+
+      /* ダウンロードメニュー */
+
+      menuButton.addEventListener(
+        "click",
+        event => {
+
+          event.stopPropagation();
+
+          document
+            .querySelectorAll(".menu")
+            .forEach(otherMenu => {
+
+              if (otherMenu !== menu) {
+
+                otherMenu.classList.remove(
+                  "open"
+                );
+
+              }
+
+            });
+
+          menu.classList.toggle(
+            "open"
+          );
+
+        }
+      );
+
+    });
+
+
+    /* メニューを閉じる */
+
+    document.addEventListener(
+      "click",
+      () => {
 
         document
           .querySelectorAll(".menu")
-          .forEach(otherMenu => {
+          .forEach(menu => {
 
-            if (otherMenu !== menu) {
-              otherMenu.classList.remove("open");
-            }
+            menu.classList.remove(
+              "open"
+            );
 
           });
 
-        menu.classList.toggle("open");
+      }
+    );
 
-      });
 
-    });
+    /* Lyrics Card */
 
-    document.addEventListener("click", () => {
+    const lyricsButton =
+      document.querySelector(
+        ".lyrics-button"
+      );
 
-      document
-        .querySelectorAll(".menu")
-        .forEach(menu => {
-          menu.classList.remove("open");
-        });
+    const lyricsModal =
+      document.querySelector(
+        ".lyrics-modal"
+      );
 
-    });
+    const lyricsClose =
+      document.querySelector(
+        ".lyrics-close"
+      );
+
+
+    lyricsButton.addEventListener(
+      "click",
+      () => {
+
+        lyricsModal.classList.add(
+          "open"
+        );
+
+      }
+    );
+
+
+    lyricsClose.addEventListener(
+      "click",
+      () => {
+
+        lyricsModal.classList.remove(
+          "open"
+        );
+
+      }
+    );
+
+
+    /* 背景クリックで閉じる */
+
+    lyricsModal.addEventListener(
+      "click",
+      event => {
+
+        if (
+          event.target === lyricsModal
+        ) {
+
+          lyricsModal.classList.remove(
+            "open"
+          );
+
+        }
+
+      }
+    );
+
   </script>
 
 </body>
