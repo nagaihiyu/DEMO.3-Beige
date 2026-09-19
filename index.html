@@ -153,3 +153,33 @@
     <footer>
       無断配布禁止<br>
       © 2026 Nagai Hiyu
+    </footer>
+
+  </main>
+
+
+  <!-- 複数の曲を同時再生しない -->
+  <script>
+
+    const players = document.querySelectorAll("audio");
+
+    players.forEach(player => {
+
+      player.addEventListener("play", () => {
+
+        players.forEach(other => {
+
+          if (other !== player) {
+            other.pause();
+          }
+
+        });
+
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>
