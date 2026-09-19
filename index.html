@@ -8,6 +8,46 @@
   <!-- 検索避け -->
   <meta name="robots" content="noindex, nofollow">
 
+  <!-- Adobe Fonts -->
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'qtl1pmd',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h = d.documentElement,
+      t = setTimeout(function() {
+        h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+      }, config.scriptTimeout),
+      tk = d.createElement("script"),
+      f = false,
+      s = d.getElementsByTagName("script")[0],
+      a;
+
+      h.className += " wf-loading";
+      tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+      tk.async = true;
+
+      tk.onload = tk.onreadystatechange = function() {
+        a = this.readyState;
+
+        if (f || (a && a != "complete" && a != "loaded")) {
+          return;
+        }
+
+        f = true;
+        clearTimeout(t);
+
+        try {
+          Typekit.load(config);
+        } catch (e) {}
+      };
+
+      s.parentNode.insertBefore(tk, s);
+    })(document);
+  </script>
+
   <title>DEMO.3「Beige」</title>
 
   <style>
@@ -28,8 +68,10 @@
     }
 
     h1 {
+      font-family: "dnp-shuei-nmincho-std", sans-serif;
       font-size: 24px;
-      font-weight: 300;
+      font-weight: 400;
+      font-style: normal;
       margin: 0 0 8px;
     }
 
@@ -45,8 +87,10 @@
     }
 
     .title {
+      font-family: "dnp-shuei-nmincho-std", sans-serif;
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 400;
+      font-style: normal;
       margin-bottom: 10px;
     }
 
@@ -54,6 +98,8 @@
       display: inline-block;
       width: 30px;
       color: rgba(255, 255, 255, 0.65);
+      font-family: -apple-system, BlinkMacSystemFont,
+        "Hiragino Sans", "Yu Gothic", sans-serif;
       font-size: 13px;
       font-weight: 300;
     }
